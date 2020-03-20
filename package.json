@@ -1,0 +1,14 @@
+{
+  "name": "setup-android-ndk-action",
+  "version": "1.0.0",
+  "description": "GitHub Action used to install Android NDK",
+  "main": "index.js",
+  "author": "jerray <jerrayfu@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.2.0",
+    "@actions/exec": "^1.0.1",
+    "@actions/io": "^1.0.2",
+    "@actions/tool-cache": "^1.1.2"
+  }
+}

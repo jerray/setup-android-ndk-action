@@ -1,0 +1,15 @@
+name: 'Setup Android NDK'
+description: 'Install specific NDK version in your environment'
+author: 'jerray'
+inputs:
+  ndk-version:
+    description: 'NDK version, for example r21'
+    required: true
+  ndk-sha1:
+    description: 'SHA1 Checksum'
+runs:
+  using: 'node12'
+  main: 'index.js'
+branding:
+  icon: 'settings'
+  color: 'green'

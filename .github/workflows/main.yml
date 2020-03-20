@@ -1,0 +1,23 @@
+name: Main
+on:
+  - push
+
+jobs:
+  Test:
+    name: Testing
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Setup NDK
+        uses: ./
+        with:
+          ndk-version: 'r20'
+
+      - name: Verify version
+        run: |
+          cat /usr/local/lib/android/sdk/ndk-bundle/source.properties
