@@ -6,11 +6,19 @@ const core = require('@actions/core');
 const exec = require('@actions/exec');
 const io = require('@actions/io');
 
-const androidSDKRoot = '/usr/local/lib/android/sdk';
+const androidSDKRoot = process.env.ANDROID_SDK_ROOT;
 const platform = os.platform();
 const version = core.getInput('ndk-version', { required: true });
+const behavior = core.getInput('behavior', {}) || 'install';
 
 async function run() {
+  const bundlePath = path.join(androidSDKRoot, 'ndk-bundle');
+  await io.rmRF(bundlePath);
+
+  if (behavior != 'install') {
+    return;
+  }
+
   const system = (function() { switch(platform) {
     case 'linux':
       return 'linux';
@@ -27,9 +35,7 @@ async function run() {
   const downloadedPath = await tc.downloadTool(url);
   const extractedPath = await tc.extractZip(downloadedPath);
 
-  const bundlePath = `${androidSDKRoot}/ndk-bundle`;
-  await io.rmRF(bundlePath);
-  await io.mv(path.join(`${extractedPath}`, `android-ndk-${version}`), bundlePath);
+  await io.mv(path.join(extractedPath, `android-ndk-${version}`), bundlePath);
 }
 
 run().catch(function(e) {

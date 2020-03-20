@@ -17,6 +17,7 @@ jobs:
         uses: ./
         with:
           ndk-version: 'r20'
+          behavior: remove
 
       - name: Verify version
         run: |

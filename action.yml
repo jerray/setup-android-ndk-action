@@ -3,10 +3,13 @@ description: 'Install specific NDK version in your environment'
 author: 'jerray'
 inputs:
   ndk-version:
-    description: 'NDK version, for example r21'
+    description: NDK version, for example r21
     required: true
   ndk-sha1:
-    description: 'SHA1 Checksum'
+    description: SHA1 Checksum
+  behavior:
+    description: Script behavior. Available behaviors are `install` and `remove`
+    default: install
 runs:
   using: 'node12'
   main: 'index.js'
