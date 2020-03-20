@@ -25,7 +25,7 @@ async function run() {
   const filename = `android-ndk-${version}-${system}-x86_64`;
   const url = `https://dl.google.com/android/repository/${filename}.zip`;
   const downloadedPath = await tc.downloadTool(url);
-  const extractedPath = await tc.zip(downloadedPath);
+  const extractedPath = await tc.extractZip(downloadedPath);
 
   const bundlePath = `${androidSDKRoot}/ndk-bundle`;
   await io.rmRF(bundlePath);
