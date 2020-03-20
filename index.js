@@ -13,6 +13,7 @@ const behavior = core.getInput('behavior', {}) || 'install';
 
 async function run() {
   const bundlePath = path.join(androidSDKRoot, 'ndk-bundle');
+  console.log(bundlePath);
   await io.rmRF(bundlePath);
 
   if (behavior != 'install') {
