@@ -7,7 +7,7 @@ jobs:
     name: Testing
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macOS-latest]
+        os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout
@@ -17,7 +17,6 @@ jobs:
         uses: ./
         with:
           ndk-version: 'r20'
-          behavior: remove
 
       - name: Verify version
         run: |
